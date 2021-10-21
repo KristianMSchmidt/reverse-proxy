@@ -29,5 +29,5 @@ services:
     restart: always
 
 networks:
-  nginx-proxynet:
+  proxynet:
     driver: bridge
