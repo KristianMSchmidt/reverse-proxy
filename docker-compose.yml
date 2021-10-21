@@ -1,0 +1,32 @@
+version: '2'
+
+services:
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./data/certs:/etc/nginx/certs:ro
+      - /etc/nginx/vhost.d
+      - /usr/share/nginx/html
+      - ./config/client_max_body_size.conf:/etc/nginx/conf.d/client_max_body_size.conf:ro
+      - ./data/var/log/nginx:/var/log/nginx
+    networks:
+      - nginx-proxynet
+    restart: always
+
+  letsencrypt-nginx-proxy-companion:
+    image: jrcs/letsencrypt-nginx-proxy-companion
+    volumes_from:
+      - nginx-proxy:rw
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./data/certs:/etc/nginx/certs:rw
+    environment:
+      - DEFAULT_EMAIL=dybber@di.ku.dk
+    restart: always
+
+networks:
+  nginx-proxynet:
