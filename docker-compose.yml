@@ -14,7 +14,7 @@ services:
       - ./config/client_max_body_size.conf:/etc/nginx/conf.d/client_max_body_size.conf:ro
       - ./data/var/log/nginx:/var/log/nginx
     networks:
-      - nginx-proxynet
+      - proxynet
     restart: always
 
   letsencrypt-nginx-proxy-companion:
