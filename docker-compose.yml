@@ -25,7 +25,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./data/certs:/etc/nginx/certs:rw
     environment:
-      - DEFAULT_EMAIL=dybber@di.ku.dk
+      - DEFAULT_EMAIL=kmollerschmidt@gmail.com
     restart: always
 
 networks:

@@ -1,5 +1,5 @@
 ## ----------------------------------------------------------------------
-## Makefile for reverse-proxy for dataekspeditioner.dk
+## Makefile for reverse-proxy for kristianms.com
 ## ----------------------------------------------------------------------
 
 help:   ## Show this help.
